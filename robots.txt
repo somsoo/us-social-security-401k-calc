@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://us-social-security-401k-calc.enjoy-onepage.com/sitemap.xml
