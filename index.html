@@ -1,28 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Social Security &amp; 401(k) Retirement Calculator - Under maintenance</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="site-status" content="maintenance">
-<meta name="description" content="This tool is temporarily offline while it is rebuilt.">
+<title>Social Security &amp; 401k Calculator</title>
+<meta name="description" content="Calculate combined Social Security and 401k monthly retirement income and growth.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://us-social-security-401k-calc.enjoy-onepage.com/">
+<meta name="theme-color" content="#0d9488">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Social Security &amp; 401k Calculator">
+<meta property="og:title" content="Social Security &amp; 401k Calculator">
+<meta property="og:description" content="Calculate combined Social Security and 401k monthly retirement income and growth.">
+<meta property="og:url" content="https://us-social-security-401k-calc.enjoy-onepage.com/">
+<meta property="og:image" content="https://us-social-security-401k-calc.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Social Security &amp; 401k Calculator">
+<meta name="twitter:description" content="Calculate combined Social Security and 401k monthly retirement income and growth.">
+<meta name="twitter:image" content="https://us-social-security-401k-calc.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="Social Security 401k RSS" href="https://us-social-security-401k-calc.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://us-social-security-401k-calc.enjoy-onepage.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://us-social-security-401k-calc.enjoy-onepage.com/#webapp",
+      "name": "Social Security & 401k Calculator",
+      "url": "https://us-social-security-401k-calc.enjoy-onepage.com/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "inLanguage": "en",
+      "description": "Comprehensive retirement income calculator estimating combined monthly Social Security benefits and 401(k) investment distributions.",
+      "image": "https://us-social-security-401k-calc.enjoy-onepage.com/og-image.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://us-social-security-401k-calc.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do Social Security and a 401(k) work together in retirement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Social Security provides guaranteed, inflation-adjusted baseline income, while your 401(k) offers discretionary investment growth and variable withdrawals to bridge retirement living expenses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does claiming age affect my monthly Social Security benefits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claiming at age 62 permanently reduces your monthly benefit by up to 30%, whereas delaying until age 70 increases your monthly benefit by 8% per year past Full Retirement Age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 4% safe withdrawal rule for 401(k) accounts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 4% rule is an empirical financial guideline suggesting retirees can withdraw 4% of their initial portfolio balance in the first year, adjusting for inflation annually, with high probability of lasting 30 years."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6946654760086847" crossorigin="anonymous"></script>
 <style>
-  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
-  main { max-width: 560px; margin: 12vh auto; padding: 32px 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; }
-  h1 { font-size: 1.4rem; margin: 0 0 12px; }
-  p { line-height: 1.6; color: #334155; }
-  a { color: #1d4ed8; font-weight: 600; }
-  .tag { display: inline-block; font-size: .8rem; font-weight: 700; color: #92400e; background: #fef3c7; border-radius: 999px; padding: 4px 10px; margin-bottom: 14px; }
+  :root {
+    --primary: #0d9488;
+    --primary-hover: #0f766e;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 0 16px;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 24px 0 48px; }
+  header { text-align: center; margin-bottom: 24px; }
+  header h1 { font-size: 1.85rem; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
+  header p { font-size: 0.95rem; color: var(--text-muted); }
+
+  .manual-ad-box {
+    margin: 16px auto;
+    text-align: center;
+    background: transparent;
+  }
+
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 768px) {
+    .grid2 { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  .card h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .form-row { display: flex; gap: 10px; margin-bottom: 12px; }
+  .form-col { flex: 1; }
+  .form-group { margin-bottom: 12px; }
+  .form-label { display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px; }
+  .form-input, .form-select {
+    width: 100%;
+    padding: 8px 11px;
+    font-size: 0.88rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    background: #ffffff;
+  }
+  .form-input:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
+  }
+
+  .summary-banner {
+    background: #f0fdfa;
+    border: 2px solid #99f6e4;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .summary-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: #0f766e; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .summary-value { font-size: 2.1rem; font-weight: 800; color: #115e59; font-family: ui-monospace, SFMono-Regular, monospace; }
+  .summary-sub { font-size: 0.8rem; color: #0d9488; font-weight: 600; margin-top: 4px; }
+
+  .dual-stat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-card .v { font-size: 1.15rem; font-weight: 800; color: #1e293b; }
+  .stat-card .l { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+  .breakdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+  .breakdown-table tr { border-bottom: 1px solid #f1f5f9; }
+  .breakdown-table tr:last-child { border-bottom: none; }
+  .breakdown-table td { padding: 8px 4px; }
+  .breakdown-table .k { color: var(--text-muted); font-weight: 500; }
+  .breakdown-table .v { text-align: right; font-weight: 700; color: #1e293b; }
+
+  .replacement-bar {
+    background: #f1f5f9;
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+  .replacement-fill {
+    background: var(--primary);
+    height: 100%;
+    width: 75%;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  .info-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .info-section h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin-bottom: 16px; }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .info-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .how-step {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .how-step .step-num {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    border-radius: 50%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .how-step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: #1e293b; }
+  .how-step p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; }
+
+  .faq-list { margin-top: 14px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item h3 { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+  .faq-item p { font-size: 0.85rem; color: #475569; line-height: 1.5; }
+
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: .85rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    z-index: 9999;
+  }
+  .toast.show { opacity: 1; }
+
+  footer {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+  footer a { color: var(--text-muted); text-decoration: none; margin: 0 8px; }
+  footer a:hover { color: var(--text-main); text-decoration: underline; }
 </style>
 </head>
 <body>
-<main>
-  <span class="tag">Under maintenance</span>
-  <h1>Social Security &amp; 401(k) Retirement Calculator</h1>
-  <p>This tool is temporarily offline. We found that the previous version did not work the way it was described, so we took it down while we rebuild it properly.</p>
-  <p>Please check back later.</p>
-  <p><a href="https://enjoy-onepage.com/">Browse our other free tools</a></p>
-</main>
+<div class="container">
+  <header>
+    <h1>Social Security &amp; 401k Calculator</h1>
+    <p>Project your combined monthly retirement paycheck from Social Security and 401(k) investments.</p>
+  </header>
+
+  <!-- ADSENSE START: top -->
+  <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; min-height: 100px; margin: 0 auto 16px; text-align: center; background: transparent;">
+    <ins class="adsbygoogle"
+         style="display:block; min-height: 100px;"
+         data-ad-client="ca-pub-6946654760086847"
+         data-ad-slot="3824727725"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <!-- ADSENSE END: top -->
+
+  <div class="grid2">
+    <section class="card">
+      <h2>Retirement &amp; Savings Profile</h2>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label class="form-label" for="curAge">Current Age</label>
+          <input type="number" id="curAge" class="form-input" value="38" min="20" max="69">
+        </div>
+        <div class="form-col">
+          <label class="form-label" for="retAge">Retirement Age</label>
+          <input type="number" id="retAge" class="form-input" value="67" min="60" max="75">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="annualSalary">Current Annual Salary ($)</label>
+        <input type="number" id="annualSalary" class="form-input" value="90000" min="0" step="1000">
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label class="form-label" for="ssAge">SS Claiming Age</label>
+          <select id="ssAge" class="form-select">
+            <option value="62">Age 62 (Early - 70%)</option>
+            <option value="65">Age 65 (Reduced - 86.7%)</option>
+            <option value="67" selected>Age 67 (Full FRA - 100%)</option>
+            <option value="70">Age 70 (Delayed - 124%)</option>
+          </select>
+        </div>
+        <div class="form-col">
+          <label class="form-label" for="ssPia">SS at Full Age ($/mo)</label>
+          <input type="number" id="ssPia" class="form-input" value="2500" min="0" step="50">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="currentBalance">Current 401(k) Balance ($)</label>
+        <input type="number" id="currentBalance" class="form-input" value="85000" min="0" step="5000">
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label class="form-label" for="contribPercent">Your 401(k) Contrib (%)</label>
+          <input type="number" id="contribPercent" class="form-input" value="8" min="0" max="30">
+        </div>
+        <div class="form-col">
+          <label class="form-label" for="matchPercent">Employer Match (%)</label>
+          <input type="number" id="matchPercent" class="form-input" value="4" min="0" max="10">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="annualReturn">Expected Investment Return (%)</label>
+        <input type="number" id="annualReturn" class="form-input" value="7.0" min="1" max="15" step="0.5">
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Projected Monthly Paycheck</h2>
+
+      <div class="summary-banner">
+        <div class="summary-title">Total Monthly Retirement Income</div>
+        <div class="summary-value" id="valTotalMonthly">$6,840 / mo</div>
+        <div class="summary-sub" id="valAnnualIncome">Annual Total: $82,080 / yr</div>
+      </div>
+
+      <div class="dual-stat">
+        <div class="stat-card">
+          <div class="v" id="valSsMonthly">$2,500 / mo</div>
+          <div class="l">Social Security</div>
+        </div>
+        <div class="stat-card">
+          <div class="v" id="val401kMonthly">$4,340 / mo</div>
+          <div class="l">401(k) Safe 4% Rule</div>
+        </div>
+      </div>
+
+      <table class="breakdown-table">
+        <tbody>
+          <tr>
+            <td class="k">Projected 401(k) Balance at Age <span id="lblRetAge">67</span>:</td>
+            <td class="v" id="valTotal401k">$1,302,400</td>
+          </tr>
+          <tr>
+            <td class="k">Annual 401(k) Safe Withdrawal (4%):</td>
+            <td class="v" id="valAnnual401k">$52,096 / yr</td>
+          </tr>
+          <tr>
+            <td class="k">Social Security Benefit Multiplier:</td>
+            <td class="v" id="valSsMultiplier">100% of FRA</td>
+          </tr>
+          <tr>
+            <td class="k">Income Replacement Ratio:</td>
+            <td class="v" id="valReplacementRatio">91.2%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="replacement-bar">
+        <div class="replacement-fill" id="replacementFill"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
+        <span>Benchmark: 70%</span>
+        <span id="lblReplacementStatus">Status: Excellent Coverage</span>
+      </div>
+    </section>
+  </div>
+  <!-- ADSENSE START: mid -->
+  <div class="manual-ad-box ad-mid-banner" style="width: 100%; max-width: 960px; min-height: 250px; margin: 20px auto; text-align: center; background: transparent;">
+    <ins class="adsbygoogle"
+         style="display:block; min-height: 250px;"
+         data-ad-client="ca-pub-6946654760086847"
+         data-ad-slot="1186914926"
+         data-ad-format="rectangle,horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <!-- ADSENSE END: mid -->
+
+  <section class="info-section">
+    <h2>How Retirement Income is Calculated</h2>
+    <div class="info-grid">
+      <div class="how-step">
+        <span class="step-num">1</span>
+        <h3>Compound 401(k) Growth</h3>
+        <p>Your current savings and recurring contributions grow with annual compound interest until retirement.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">2</span>
+        <h3>Apply 4% Rule</h3>
+        <p>An empirical 4% annual withdrawal rate provides sustainable distributions without depleting capital.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">3</span>
+        <h3>Bridge Social Security</h3>
+        <p>Social Security benefits adjust based on claiming age to form your predictable lifelong income floor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3>How do Social Security and a 401(k) work together in retirement?</h3><p>Social Security provides guaranteed, inflation-adjusted baseline income, while your 401(k) offers discretionary investment growth and variable withdrawals to bridge retirement living expenses.</p></div>
+      <div class="faq-item"><h3>How does claiming age affect my monthly Social Security benefits?</h3><p>Claiming at age 62 permanently reduces your monthly benefit by up to 30%, whereas delaying until age 70 increases your monthly benefit by 8% per year past Full Retirement Age.</p></div>
+      <div class="faq-item"><h3>What is the 4% safe withdrawal rule for 401(k) accounts?</h3><p>The 4% rule is an empirical financial guideline suggesting retirees can withdraw 4% of their initial portfolio balance in the first year, adjusting for inflation annually, with high probability of lasting 30 years.</p></div>
+    </div>
+  </section>
+
+  <!-- ADSENSE START: bottom -->
+  <div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; min-height: 280px; margin: 24px auto 16px; text-align: center; background: transparent;">
+    <ins class="adsbygoogle"
+         style="display:block; min-height: 280px;"
+         data-ad-client="ca-pub-6946654760086847"
+         data-ad-slot="3416334507"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <!-- ADSENSE END: bottom -->
+
+  <div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <p>&copy; 2026 Social Security &amp; 401k Calculator. All rights reserved.</p>
+    <p style="margin-top: 8px;">
+      <a href="/privacy.html">Privacy Policy</a> &bull;
+      <a href="/terms.html">Terms of Service</a> &bull;
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+</div>
+
+<!-- LOGIC START -->
+<script>
+(function() {
+  const curAgeEl = document.getElementById('curAge');
+  const retAgeEl = document.getElementById('retAge');
+  const annualSalaryEl = document.getElementById('annualSalary');
+  const ssAgeEl = document.getElementById('ssAge');
+  const ssPiaEl = document.getElementById('ssPia');
+  const currentBalanceEl = document.getElementById('currentBalance');
+  const contribPercentEl = document.getElementById('contribPercent');
+  const matchPercentEl = document.getElementById('matchPercent');
+  const annualReturnEl = document.getElementById('annualReturn');
+
+  const valTotalMonthlyEl = document.getElementById('valTotalMonthly');
+  const valAnnualIncomeEl = document.getElementById('valAnnualIncome');
+  const valSsMonthlyEl = document.getElementById('valSsMonthly');
+  const val401kMonthlyEl = document.getElementById('val401kMonthly');
+  const lblRetAgeEl = document.getElementById('lblRetAge');
+  const valTotal401kEl = document.getElementById('valTotal401k');
+  const valAnnual401kEl = document.getElementById('valAnnual401k');
+  const valSsMultiplierEl = document.getElementById('valSsMultiplier');
+  const valReplacementRatioEl = document.getElementById('valReplacementRatio');
+  const replacementFillEl = document.getElementById('replacementFill');
+  const lblReplacementStatusEl = document.getElementById('lblReplacementStatus');
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function getSsMultiplier(age) {
+    if (age === 62) return 0.70;
+    if (age === 63) return 0.75;
+    if (age === 64) return 0.80;
+    if (age === 65) return 0.867;
+    if (age === 66) return 0.933;
+    if (age === 67) return 1.00;
+    if (age === 68) return 1.08;
+    if (age === 69) return 1.16;
+    if (age === 70) return 1.24;
+    return 1.00;
+  }
+
+  function calculate() {
+    const curAge = parseInt(curAgeEl.value, 10) || 38;
+    const retAge = Math.max(curAge + 1, parseInt(retAgeEl.value, 10) || 67);
+    const salary = Math.max(0, parseFloat(annualSalaryEl.value) || 0);
+    const ssClaimAge = parseInt(ssAgeEl.value, 10) || 67;
+    const ssPia = Math.max(0, parseFloat(ssPiaEl.value) || 0);
+    const balance = Math.max(0, parseFloat(currentBalanceEl.value) || 0);
+    const contribPct = Math.max(0, parseFloat(contribPercentEl.value) || 0);
+    const matchPct = Math.max(0, parseFloat(matchPercentEl.value) || 0);
+    const rate = Math.max(0.1, parseFloat(annualReturnEl.value) || 7.0) / 100;
+
+    const years = Math.max(1, retAge - curAge);
+    lblRetAgeEl.textContent = retAge;
+
+    // 1. Social Security monthly
+    const ssMult = getSsMultiplier(ssClaimAge);
+    const ssMonthly = ssPia * ssMult;
+    valSsMonthlyEl.textContent = fmt(ssMonthly) + ' / mo';
+    valSsMultiplierEl.textContent = Math.round(ssMult * 100) + '% of Full Age';
+
+    // 2. 401(k) future value
+    const annualContrib = salary * ((contribPct + matchPct) / 100);
+    const growthFactor = Math.pow(1 + rate, years);
+    const fvBalance = balance * growthFactor;
+    const fvContrib = annualContrib * ((growthFactor - 1) / rate);
+    const total401k = fvBalance + fvContrib;
+
+    // 3. Safe withdrawal (4% rule)
+    const annualWithdrawal = total401k * 0.04;
+    const monthly401k = annualWithdrawal / 12;
+
+    valTotal401kEl.textContent = fmt(total401k);
+    valAnnual401kEl.textContent = fmt(annualWithdrawal) + ' / yr';
+    val401kMonthlyEl.textContent = fmt(monthly401k) + ' / mo';
+
+    // 4. Combined
+    const totalMonthly = ssMonthly + monthly401k;
+    const totalAnnual = totalMonthly * 12;
+
+    valTotalMonthlyEl.textContent = fmt(totalMonthly) + ' / mo';
+    valAnnualIncomeEl.textContent = 'Annual Total: ' + fmt(totalAnnual) + ' / yr';
+
+    // 5. Replacement ratio
+    const currentMonthlySalary = salary > 0 ? (salary / 12) : 1;
+    const ratio = Math.round((totalMonthly / currentMonthlySalary) * 100);
+    valReplacementRatioEl.textContent = ratio + '%';
+
+    const barWidth = Math.min(100, ratio);
+    replacementFillEl.style.width = barWidth + '%';
+
+    if (ratio >= 80) {
+      lblReplacementStatusEl.textContent = 'Status: Excellent Coverage (Target Met)';
+      lblReplacementStatusEl.style.color = '#0d9488';
+    } else if (ratio >= 65) {
+      lblReplacementStatusEl.textContent = 'Status: Adequate Baseline Coverage';
+      lblReplacementStatusEl.style.color = '#ca8a04';
+    } else {
+      lblReplacementStatusEl.textContent = 'Status: Savings Gap Warning';
+      lblReplacementStatusEl.style.color = '#dc2626';
+    }
+  }
+
+  [curAgeEl, retAgeEl, annualSalaryEl, ssAgeEl, ssPiaEl, currentBalanceEl, contribPercentEl, matchPercentEl, annualReturnEl].forEach(el => {
+    el.addEventListener('input', calculate);
+    el.addEventListener('change', calculate);
+  });
+
+  calculate();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>

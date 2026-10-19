@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</title>
+  <title>Social Security &amp; 401k Calculator</title>
   <link>https://us-social-security-401k-calc.enjoy-onepage.com/</link>
-  <description>Project your future monthly retirement income by combining estimated Social Security benefits and 401(k) employer matching compound growth.</description>
+  <description>Calculate combined Social Security and 401k monthly retirement income and growth.</description>
   <language>en-us</language>
   <atom:link href="https://us-social-security-401k-calc.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
-  <lastBuildDate>Tue, 29 Sep 2026 06:03:05 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 19 Oct 2026 02:26:46 +0000</lastBuildDate>
   <item>
-    <title>Disclaimer | Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</title>
+    <title>Disclaimer | Social Security &amp; 401k Calculator</title>
     <link>https://us-social-security-401k-calc.enjoy-onepage.com/disclaimer.html</link>
     <guid isPermaLink="true">https://us-social-security-401k-calc.enjoy-onepage.com/disclaimer.html</guid>
-    <description>Disclaimer | Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</description>
-    <pubDate>Sun, 20 Sep 2026 22:14:19 +0900</pubDate>
+    <description>Disclaimer for the Social Security &amp; 401k Calculator.</description>
+    <pubDate>Mon, 19 Oct 2026 02:26:46 +0000</pubDate>
   </item>
   <item>
-    <title>Terms of Service | Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</title>
-    <link>https://us-social-security-401k-calc.enjoy-onepage.com/terms.html</link>
-    <guid isPermaLink="true">https://us-social-security-401k-calc.enjoy-onepage.com/terms.html</guid>
-    <description>Terms of Service | Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</description>
-    <pubDate>Sun, 20 Sep 2026 22:14:19 +0900</pubDate>
-  </item>
-  <item>
-    <title>Privacy Policy | Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</title>
+    <title>Privacy Policy | Social Security &amp; 401k Calculator</title>
     <link>https://us-social-security-401k-calc.enjoy-onepage.com/privacy.html</link>
     <guid isPermaLink="true">https://us-social-security-401k-calc.enjoy-onepage.com/privacy.html</guid>
-    <description>Privacy Policy | Social Security &amp; 401(k) Retirement Calculator | Future Nest Egg Simulator</description>
-    <pubDate>Sun, 20 Sep 2026 22:14:19 +0900</pubDate>
+    <description>Privacy Policy for the Social Security &amp; 401k Calculator.</description>
+    <pubDate>Mon, 19 Oct 2026 02:26:46 +0000</pubDate>
+  </item>
+  <item>
+    <title>Terms of Service | Social Security &amp; 401k Calculator</title>
+    <link>https://us-social-security-401k-calc.enjoy-onepage.com/terms.html</link>
+    <guid isPermaLink="true">https://us-social-security-401k-calc.enjoy-onepage.com/terms.html</guid>
+    <description>Terms of Service for the Social Security &amp; 401k Calculator.</description>
+    <pubDate>Mon, 19 Oct 2026 02:26:46 +0000</pubDate>
   </item>
 </channel>
 </rss>
