@@ -552,12 +552,12 @@
   function calculate() {
     const curAge = parseInt(curAgeEl.value, 10) || 38;
     const retAge = Math.max(curAge + 1, parseInt(retAgeEl.value, 10) || 67);
-    const salary = Math.max(0, parseFloat(annualSalaryEl.value) || 0);
+    const salary = Math.max(0, Math.max(0, parseFloat(annualSalaryEl.value) || 0));
     const ssClaimAge = parseInt(ssAgeEl.value, 10) || 67;
-    const ssPia = Math.max(0, parseFloat(ssPiaEl.value) || 0);
-    const balance = Math.max(0, parseFloat(currentBalanceEl.value) || 0);
-    const contribPct = Math.max(0, parseFloat(contribPercentEl.value) || 0);
-    const matchPct = Math.max(0, parseFloat(matchPercentEl.value) || 0);
+    const ssPia = Math.max(0, Math.max(0, parseFloat(ssPiaEl.value) || 0));
+    const balance = Math.max(0, Math.max(0, parseFloat(currentBalanceEl.value) || 0));
+    const contribPct = Math.max(0, Math.max(0, parseFloat(contribPercentEl.value) || 0));
+    const matchPct = Math.max(0, Math.max(0, parseFloat(matchPercentEl.value) || 0));
     const rate = Math.max(0.1, parseFloat(annualReturnEl.value) || 7.0) / 100;
 
     const years = Math.max(1, retAge - curAge);
